@@ -1,0 +1,8 @@
+.idea
+*.pyc
+*.log
+*.db
+*.out
+static/tmp/*
+.vscode
+.project
