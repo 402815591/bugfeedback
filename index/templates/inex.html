@@ -3,8 +3,247 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style type="text/css">
+    	.feedback_bg{
+    		height::700px;
+		    width: 1110px;
+		    background-color: white;
+		    margin: 70px auto 0;
+		    border-radius: 6px;
+		    border: 2px solid #D3D7DA;
+    	}
+    	.feedback_head{
+		    height: 80px;
+		    background-color: #DFF0D8;
+		    text-align: center;
+		    font-size: 47px;
+		    line-height: 80px;
+		    letter-spacing: 10px;
+		    color: #468847;
+		    font-family: 微软雅黑;
+    	}
+    	.feedback_head img{
+    		float: right;
+    		margin: 14px 60px 0 -150px;
+    	}
+    	.feedback_word1{
+    		margin: 25px 0 0 0;
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+    	}
+    	.feedback_content{
+    		width: 810px;
+			height: 690px;
+			margin: 0 auto;
+    	}
+    	.feedback_content hr{
+    		border: 1px;
+		    border-top: 1px solid #D3D7DA;
+		    margin: 6px 0;
+    	}
+    	.feedback_content .row{
+    		margin:0;
+    	}
+    	.feedback_content .col-md-4{
+    		margin-top: 3px;
+    		padding: 0;
+    	}
+    	
+    	.checkbox input{
+    		width: 22px;
+		    height: 18px;
+		    margin-top: -15px;
+    	}
+    	.circle{
+    		display: inline-block;
+		    height: 17px;
+		    width: 17px;
+		    background-color: #CCD1D9;
+		    border: 1px solid #606060;
+		    border-radius: 50%;
+		    margin: -2px 0;
+    	}
+    	.feedback_word2{
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+		    margin-left: 10px;
+		    width: 120px;
+    	}
+    	.content_left{
+    		text-align: left;
+    	}
+    	.content_center{
+    		text-align: center;
+    	}
+    	.content_right{
+    		text-align: right;
+    	}
+    	.feedback_content textarea{
+    		resize: none;
+    		margin-top: 10px;
+    	}
+    	.feedback_content textarea::-webkit-input-placeholder{
+    		font-size: 16px;
+		    color: #CCCCCC;
+		    letter-spacing: 1px;
+		    font-family: 微软雅黑;
+		}
+		.feedback_content textarea::-moz-placeholder{
+			font-size: 16px;
+		    color: #CCCCCC;
+		    letter-spacing: 1px;
+		    font-family: 微软雅黑;
+		}
+		.feedback_content textarea::-moz-placeholder{
+			font-size: 16px;
+		    color: #CCCCCC;
+		    letter-spacing: 1px;
+		    font-family: 微软雅黑;
+		}
+		.add_picture{
+			height: 180px;
+		    width: 100%;
+		    border: 1px solid #CCCCCC;
+		    border-radius: 4px;
+		    margin-top: 10px;
+		    text-align: center;
+		    line-height: 180px;
+		}
+		.add_picture img{
+			width: 17%;
+		}
+		.contact_way{
+			margin-top:20px;
+			padding:0;
+		}
+		.feedback_word3{
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+    	}
+    	.contact_way select{
+    		height: 30px;
+		    width: 8%;
+		    border-radius: 4px;
+		    color: #7B7272;
+		    border: 1px solid #CCCCCC;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    	}
+    	.contact_way input{
+    		width: 28%;
+		    display: inline-block;
+		    height: 30px;
+    	}
+    	.feedback_submit{
+    		background-color: #A0D468;
+		    border: 1px solid #A6D771;
+		    margin-top: 25px;
+		    width: 70px;
+		    height: 35px;
+		    font-size: 20px;
+		    letter-spacing: 3px;
+		    font-family: 微软雅黑;
+		    line-height: 21px;
+		    cursor: pointer;
+		    color: white;
+		    border-radius: 4px;
+    	}
+    	.feedback_submit:hover{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:active{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:visited{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:link{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    </style>
 </head>
 <body>
-
+<div class="feedback_bg">
+	<div class="feedback_head">
+		<span>页面问题反馈页</span>
+		<img src="../static/images/q.png" alt="">
+	</div>
+	<div class="feedback_body">
+		<div class="feedback_content">
+			<p class="feedback_word1">请选择您要反馈的问题（可多选）</p>
+			<hr>
+			<div class="row">
+				<div class="col-md-4 content_left">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox1" value="option1"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+				<div class="col-md-4 content_center">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox2" value="option2"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+				<div class="col-md-4 content_right">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox3" value="option3"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+			</div>
+			<div class="row" style="margin-top:10px;">
+				<div class="col-md-4 content_left">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox4" value="option4"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+				<div class="col-md-4 content_center">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox5" value="option5"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+				<div class="col-md-4 content_right">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox6" value="option6"> 
+					</label>
+					<span class="feedback_word2">页面问题反馈</span>
+				</div>
+			</div>
+			<p class="feedback_word1">建议内容（输入在300字内）：</p>
+			<textarea class="form-control" rows="8" placeholder="在此描述您的问题和建议......"></textarea>
+			<p class="feedback_word1">添加图片（图片格式为jpg、png、gif,最多上传3张，单张2M以内）：</p>
+			<div class="add_picture">
+				<img src="../static/images/add.png" alt="">
+			</div>
+			<div class="col-md-12 contact_way">
+				<span class="feedback_word3">联系方式：</span>
+				<select>
+					<option>手机号</option>
+					<option>QQ</option>
+					<option>邮箱</option>
+					<option>其它</option>
+				</select>
+				<input type="text" class="form-control">
+				<span class="feedback_word3">请留下您的联系方式，以便更好的为您服务</span>
+			</div>
+			<div class="col-md-12">
+				<button type="button" class="center-block feedback_submit">提交</button>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
