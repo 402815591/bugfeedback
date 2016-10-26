@@ -43,7 +43,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -77,17 +77,13 @@ WSGI_APPLICATION = 'feedback.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
-        'NAME' : '',
-        'USER' : '',
-        'PASSWORD' : '',
-        'HOST' : '',
-        'PORT' : ''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
 # from mongoengine import connect
-# connect('feedback')
+# connect('bugfeedback', host='192.168.100.201', port='27017')
 
 
 # Internationalization
@@ -108,4 +104,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-# from settings_mongodb import *
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/index/static/'
