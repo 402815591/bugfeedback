@@ -241,15 +241,15 @@
 			<p class="feedback_word1">添加图片（图片格式为jpg、png、gif,最多上传3张，单张2M以内）：</p>
 			<div class="add_picture" >
                 <input type="file" name="photo" id="photo" multiple="multiple"/>
-				<img src="../static/images/add.png" alt="">
+				<img src="../static/images/add.png" alt="" id="img0">
 			</div>
 			<div class="col-md-12 contact_way">
 				<span class="feedback_word3">联系方式：</span>
-				<select>
-					<option>手机号</option>
-					<option>QQ</option>
-					<option>邮箱</option>
-					<option>其它</option>
+				<select name="contract_way">
+					<option value="tel">手机号</option>
+					<option value="QQ">QQ</option>
+					<option value="email">邮箱</option>
+					<option value="other">其它</option>
 				</select>
 				<input type="text" class="form-control" name="contract">
 				<span class="feedback_word3">请留下您的联系方式，以便更好的为您服务</span>
@@ -261,52 +261,39 @@
 		</div>
 	</div>
 </div>
+{#<div>#}
+{#    <form method="post" action="{%url 'testimg' %}" enctype="multipart/form-data">#}
+{#        <div>#}
+{#            <input type="file" name="img" id="img" multiple="multiple"/>#}
+{#            <button type="submit" class="center-block feedback_submit">提交</button>#}
+{#        </div>#}
+{##}
+{#    </form>#}
+{#</div>#}
 </body>
 <script type="text/javascript" src=" ../static/js/dropzone.min.js"></script>
 <script type="text/javascript" src="../static/js/jquery-1.10.2.min.js"></script>
-<script>
-{#    function init_dropzone(){#}
-{#        var isimage = false;#}
-{#        var image_dropzone = '';#}
-{#        //身份证照片上传#}
-{#        Dropzone.autoDiscover = false;#}
-{#        var pername;#}
-{#        var newPhoteName;#}
-{#        var url = '/upload/';#}
-{#        $("#upLoadAvantar").dropzone({#}
-{#            url: url,#}
-{#            maxFiles: 1,#}
-{#            maxFilesize: 10,#}
-{#            addRemoveLinks: true,#}
-{#            acceptedFiles: ".png, .jpg, .gif",#}
-{#            dictFileTooBig: "文件太大了,上传小于2M的图片！",#}
-{#            dictMaxFilesExceeded: "只能上传1个文件",#}
-{#            dictDefaultMessage: "点击上传照片",#}
-{#            dictRemoveFile: "点击删除重传",#}
-{#            init: function() {#}
-{#                image_dropzone = this;#}
-{##}
-{#                this.on("addedfile", function() {#}
-{#                    isimage = true#}
-{#                });#}
-{#                this.on("success", function(file,res){#}
-{#                    isimage = true;#}
-{#                    res = JSON.parse(res);#}
-{#                    console.log(res);#}
-{#                    field_id = res.data.field_id;#}
-{#                    var str = $('#attachment').val();#}
-{#                    str = field_id;#}
-{#                    $('#attachment').val(str);#}
-{##}
-{#                });#}
-{#                this.on("removedfile", function(file) {#}
-{#                    $('#upLoadAvantar').focus();#}
-{#                });#}
-{#            }#}
-{#        });#}
-{#$(function () {#}
-{#    init_dropzone();#}
-{#})#}
-{#    }#}
-</script>
+<script type="text/javascript">
+        //图片上传预览
+            $("#photo").change(function(){
+                var objUrl = getObjectURL(this.files[0]) ;
+                console.log("objUrl = "+objUrl) ;
+                if (objUrl) {
+                    $("#img0").attr("src", objUrl) ;
+                }
+            }) ;
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null ;
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+
+    </script>
 </html>
