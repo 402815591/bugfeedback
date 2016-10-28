@@ -57,15 +57,6 @@
 		    height: 18px;
 		    margin-top: -15px;
     	}
-    	.circle{
-    		display: inline-block;
-		    height: 17px;
-		    width: 17px;
-		    background-color: #CCD1D9;
-		    border: 1px solid #606060;
-		    border-radius: 50%;
-		    margin: -2px 0;
-    	}
     	.feedback_word2{
 		    letter-spacing: 2px;
 		    color: #666666;
@@ -241,7 +232,7 @@
 			<p class="feedback_word1">添加图片（图片格式为jpg、png、gif,最多上传3张，单张2M以内）：</p>
 			<div class="add_picture" >
                 <input type="file" name="photo" id="photo" multiple="multiple"/>
-				<img src="../static/images/add.png" alt="" id="img0">
+                <img src="../static/images/add.png" id="img0" alt="">
 			</div>
 			<div class="col-md-12 contact_way">
 				<span class="feedback_word3">联系方式：</span>
@@ -261,27 +252,18 @@
 		</div>
 	</div>
 </div>
-{#<div>#}
-{#    <form method="post" action="{%url 'testimg' %}" enctype="multipart/form-data">#}
-{#        <div>#}
-{#            <input type="file" name="img" id="img" multiple="multiple"/>#}
-{#            <button type="submit" class="center-block feedback_submit">提交</button>#}
-{#        </div>#}
-{##}
-{#    </form>#}
-{#</div>#}
 </body>
 <script type="text/javascript" src=" ../static/js/dropzone.min.js"></script>
 <script type="text/javascript" src="../static/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
         //图片上传预览
             $("#photo").change(function(){
-                var objUrl = getObjectURL(this.files[0]) ;
+                var objUrl = getObjectURL(this.files[2]) ;
                 console.log("objUrl = "+objUrl) ;
                 if (objUrl) {
                     $("#img0").attr("src", objUrl) ;
                 }
-            }) ;
+            });
         //建立一個可存取到該file的url
         function getObjectURL(file) {
             var url = null ;
