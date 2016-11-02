@@ -173,6 +173,12 @@
         z-index: 999;
         position: relative;
         }
+        .erro_info{
+            font-size: 16px;
+            text-align: center;
+            color: red;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -250,7 +256,10 @@
 			<div class="col-md-12">
 				<button type="submit" class="center-block feedback_submit">提交</button>
 			</div>
-            {{ feedback_form.non_field_errors }} 
+            <div class="erro_info">
+                {{ feedback_form.non_field_errors }} 
+            </div>
+
         </form>
 		</div>
 	</div>
