@@ -186,7 +186,7 @@
 			<p class="feedback_word1">请选择您要反馈的问题（可多选）</p>
 			<hr>
 			<div class="row">
-            <form method="post" action="{%url 'addcotant' %}" enctype="multipart/form-data">
+        <form method="post" action="{%url 'addcotant' %}" enctype="multipart/form-data">
 				<div class="col-md-4 content_left">
 					<label class="checkbox-inline checkbox">
 					  <input type="checkbox" id="inlineCheckbox1" value="反馈问题1" name="check_box_list">
@@ -232,7 +232,9 @@
 			<p class="feedback_word1">添加图片（图片格式为jpg、png、gif,最多上传3张，单张2M以内）：</p>
 			<div class="add_picture" >
                 <input type="file" name="photo" id="photo" multiple="multiple"/>
-                <img src="../static/images/add.png" id="img0" alt="">
+                <img src="../static/images/add.png" id="img0" alt="" style="left: 20%">
+                <img src="../static/images/add.png" id="img1" alt="" style="left: 40%">
+                <img src="../static/images/add.png" id="img2" alt="" style="left: 60%">
 			</div>
 			<div class="col-md-12 contact_way">
 				<span class="feedback_word3">联系方式：</span>
@@ -248,7 +250,8 @@
 			<div class="col-md-12">
 				<button type="submit" class="center-block feedback_submit">提交</button>
 			</div>
-                </form>
+            {{ feedback_form.non_field_errors }} 
+        </form>
 		</div>
 	</div>
 </div>
@@ -258,10 +261,24 @@
 <script type="text/javascript">
         //图片上传预览
             $("#photo").change(function(){
-                var objUrl = getObjectURL(this.files[2]) ;
-                console.log("objUrl = "+objUrl) ;
-                if (objUrl) {
-                    $("#img0").attr("src", objUrl) ;
+                if (this.files[0]){
+                    var objUrl1 = getObjectURL(this.files[0]) ;
+                }
+                if(this.files[1]){
+                    var objUrl2 = getObjectURL(this.files[1]) ;
+                }
+                if (this.files[2]){
+                    var objUrl3 = getObjectURL(this.files[2]) ;
+                }
+                console.log("objUrl1 = "+objUrl1) ;
+                if (objUrl1) {
+                    $("#img0").attr("src", objUrl1) ;
+                }
+                if (objUrl2) {
+                    $("#img1").attr("src", objUrl2) ;
+                }
+                if (objUrl3) {
+                    $("#img2").attr("src", objUrl3) ;
                 }
             });
         //建立一個可存取到該file的url
