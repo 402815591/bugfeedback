@@ -21,6 +21,7 @@ class MyRedisForm(DuckForm):
     pk_name = 'id'
 
     id = forms.CharField(max_length=32)
+    handle_status = forms.BooleanField(required=False)
     question = forms.CharField(max_length=255)
     content = forms.CharField(max_length=300)
     # image = forms.Imgfiles()
@@ -45,12 +46,6 @@ class MyRedisForm(DuckForm):
 
     @classmethod
     def create_data(cls, request, data):
-        # pk = data['id']
-        # from uuid import uuid1
-        # data['id'] = uuid1()
-        # import random
-        # data['id']=str(random.randrange(10000000000000000000000,999999999999999999999999))
-        # print data['id']
         Bug(**data).save()
 
     @classmethod
