@@ -12,6 +12,8 @@ from mongoengine.base import BaseField
 from mongoengine.fields import IntField, StringField
 from django.db.models.fields.files import FieldFile
 
+from bson import ObjectId
+
 
 connect('test2', host='192.168.100.201', port=27017)
 
@@ -27,3 +29,4 @@ class bug(Document):
     image = ListField(EmbeddedDocumentField('Imgfiles'))
     contract_way = StringField()
     contract = IntField(max_length=15)
+
