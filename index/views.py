@@ -7,9 +7,6 @@ from django import forms
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'inex.html', {})
-
 
 class check_forms(forms.Form):
     content = forms.CharField(error_messages={"required": "反馈内容错误", })
@@ -44,7 +41,7 @@ class check_forms(forms.Form):
 
 
 
-def addcotant(request):
+def index(request):
     feedback = bug()
     if request.method == 'POST':
         try:
@@ -83,5 +80,6 @@ def addcotant(request):
                     print str(e)
             else:
                 print "checklist not here"
-
-    return render(request, 'inex.html', {'feedback_form': feedback_form})
+            return render(request, 'inex.html', {'feedback_form': feedback_form})
+    else:
+        return render(request, 'index.html', {})
