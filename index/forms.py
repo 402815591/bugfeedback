@@ -34,7 +34,7 @@ class MyRedisForm(DuckForm):
 
     @classmethod
     def get_data(cls, request, start=None, stop=None):
-        return Bug.objects.all()
+        return Bug.objects.order_by("-subtime")
 
     @classmethod
     def get_data_by_pk(cls, request, pk):

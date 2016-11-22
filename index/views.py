@@ -16,26 +16,23 @@ class check_forms(forms.Form):
 
 
     def clean(self):
+        try:
+            question = self.data['check_box_list']
+        except Exception as e:
+            print 'except: ' + str(e)
+            raise forms.ValidationError(u"反馈的问题不能为空")
 
         try:
             content = self.cleaned_data['content']
         except Exception as e:
             print 'except: ' + str(e)
-            raise forms.ValidationError(u"建议内容不能为空")
+            raise forms.ValidationError(u"详细描述不能为空")
 
         try:
             contract = self.cleaned_data['contract']
         except Exception as e:
             print 'except: ' + str(e)
             raise forms.ValidationError(u"联系方式不能为空")
-
-        try:
-
-            question = self.data['check_box_list']
-            print question
-        except Exception as e:
-            print 'except: ' + str(e)
-            raise forms.ValidationError(u"反馈的问题不能为空")
 
         return self.cleaned_data
 
@@ -58,10 +55,8 @@ def index(request):
                     content = feedback_form.cleaned_data['content']
                     contract = feedback_form.cleaned_data['contract']
                     select = feedback_form.cleaned_data["contract_way"]
-
                     check_box_list = request.REQUEST.getlist('check_box_list')
                     question = ','.join(check_box_list)
-
                     img = request.FILES.getlist('photo')
                     for f in img:
                         print f, f._name
@@ -80,6 +75,6 @@ def index(request):
                     print str(e)
             else:
                 print "checklist not here"
-            return render(request, 'inex.html', {'feedback_form': feedback_form})
+        return render(request, 'index.html', {'feedback_form': feedback_form})
     else:
         return render(request, 'index.html', {})
