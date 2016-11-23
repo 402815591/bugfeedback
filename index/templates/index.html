@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <style type="text/css">
+    	.feedback_bg{
+
+		    width: 1110px;
+		    background-color: white;
+		    margin: 70px auto 0;
+		    border-radius: 6px;
+		    border: 2px solid #D3D7DA;
+    	}
+    	.feedback_head{
+		    height: 80px;
+		    background-color: #DFF0D8;
+		    text-align: center;
+		    font-size: 47px;
+		    line-height: 80px;
+		    letter-spacing: 10px;
+		    color: #468847;
+		    font-family: 微软雅黑;
+    	}
+    	.feedback_head img{
+    		float: right;
+    		margin: 14px 60px 0 -150px;
+    	}
+    	.feedback_word1{
+    		margin: 25px 0 0 0;
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+    	}
+    	.feedback_content{
+    		width: 810px;
+			min-height: 690px;
+			margin: 20px auto;
+    	}
+    	.feedback_content hr{
+    		border: 1px;
+		    border-top: 1px solid #D3D7DA;
+		    margin: 6px 0;
+    	}
+    	.feedback_content .row{
+    		margin:0;
+    	}
+    	.feedback_content .col-md-4{
+    		margin-top: 3px;
+    		padding: 0;
+    	}
+    	
+    	.checkbox input{
+    		width: 22px;
+		    height: 18px;
+		    margin-top: -15px;
+    	}
+    	.feedback_word2{
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+		    margin-left: 10px;
+		    width: 120px;
+    	}
+    	.content_left{
+    		text-align: left;
+    	}
+    	.content_center{
+    		text-align: center;
+    	}
+    	.content_right{
+    		text-align: right;
+    	}
+    	.feedback_content textarea{
+    		resize: none;
+    		margin-top: 10px;
+    	}
+    	.feedback_content textarea::-webkit-input-placeholder{
+    		font-size: 16px;
+		    color: #CCCCCC;
+		    letter-spacing: 1px;
+		    font-family: 微软雅黑;
+		}
+        .feedback_content textarea::-webkit-input-placeholder:before{
+            display: block;
+            content:"Line 2\A Line \A line3";
+		}
+		.add_picture{
+			height: 180px;
+		    width: 100%;
+		    border: 1px solid #CCCCCC;
+		    border-radius: 4px;
+		    margin-top: 10px;
+		    text-align: center;
+		    line-height: 180px;
+            position: relative;
+		}
+		.add_picture img{
+			width: 17%;
+            position: absolute;
+            top: 30px;
+            left: 40%;
+		}
+		.contact_way{
+			margin-top:20px;
+			padding:0;
+		}
+		.feedback_word3{
+		    letter-spacing: 2px;
+		    color: #666666;
+		    font-family: 微软雅黑;
+		    font-size: 16px;
+    	}
+    	.contact_way select{
+    		height: 30px;
+		    width: 8%;
+		    border-radius: 4px;
+		    color: #7B7272;
+		    border: 1px solid #CCCCCC;
+		    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    	}
+    	.contact_way input{
+    		width: 28%;
+		    display: inline-block;
+		    height: 30px;
+    	}
+    	.feedback_submit{
+    		background-color: #A0D468;
+		    border: 1px solid #A6D771;
+		    margin-top: 25px;
+		    width: 70px;
+		    height: 35px;
+		    font-size: 20px;
+		    letter-spacing: 3px;
+		    font-family: 微软雅黑;
+		    line-height: 21px;
+		    cursor: pointer;
+		    color: white;
+		    border-radius: 4px;
+            margin-bottom: 10px;
+    	}
+    	.feedback_submit:hover{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:active{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:visited{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+    	.feedback_submit:link{
+    		background-color: #87BB4E;
+		    border: 1px solid #87BB4E;
+    	}
+
+        #photo{
+        opacity: 0;
+        height: 178px;
+        width: 100%;
+        z-index: 999;
+        position: relative;
+        }
+        .erro_info{
+            font-size: 16px;
+            text-align: center;
+            color: red;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div class="feedback_bg">
+	<div class="feedback_head">
+		<span>页面问题反馈页</span>
+		<img src="../static/images/q.png" alt="">
+	</div>
+	<div class="feedback_body">
+		<div class="feedback_content">
+			<p class="feedback_word1">请选择您要反馈的问题（可多选）</p>
+			<hr>
+        <form method="post" action="" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-md-4 content_left">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox1" value="页面打开慢" name="check_box_list">
+                        <input type="text" id="check1" style="display: none">
+					</label>
+					<span class="feedback_word2">页面打开慢</span>
+				</div>
+				<div class="col-md-4 content_center">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox2" value="页面打不开" name="check_box_list">
+					</label>
+					<span class="feedback_word2">页面打不开</span>
+				</div>
+				<div class="col-md-4 content_right">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox3" value="页面报错" name="check_box_list">
+					</label>
+					<span class="feedback_word2">页面报错</span>
+				</div>
+			</div>
+			<div class="row" style="margin-top:10px;">
+				<div class="col-md-4 content_left">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox4" value="页面信息显示不正确" name="check_box_list">
+					</label>
+					<span class="feedback_word2">页面信息显示不正确</span>
+				</div>
+				<div class="col-md-4 content_center" style="padding-left: 36px">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox5" value="业务流程不正确" name="check_box_list">
+					</label>
+					<span class="feedback_word2">业务流程不正确</span>
+				</div>
+				<div class="col-md-4 content_right">
+					<label class="checkbox-inline checkbox">
+					  <input type="checkbox" id="inlineCheckbox6" value="其他问题" name="check_box_list">
+					</label>
+					<span class="feedback_word2">其他问题</span>
+				</div>
+			</div>
+			<p class="feedback_word1">详细描述（输入在300字内）：</p>
+
+			<textarea class="form-control" id="bug_detail" name="content" rows="8" placeholder="反馈问题人：xxx&#13;&#10;页面链接：http://58.42.252.155:8888/xxxxx&#13;&#10;问题描述：xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+">{{ dict.content }}</textarea>
+			<p class="feedback_word1">添加图片（图片格式为jpg、png、gif,最多上传3张，单张2M以内）：</p>
+			<div class="add_picture" >
+                <input type="file" name="photo" id="photo" multiple="multiple" accept="image/*"/>
+                <img src="../static/images/add.png" id="img0" alt="" style="left: 20%">
+                <img src="../static/images/add.png" id="img1" alt="" style="left: 40%">
+                <img src="../static/images/add.png" id="img2" alt="" style="left: 60%">
+			</div>
+			<div class="col-md-12 contact_way">
+				<span class="feedback_word3">联系方式：</span>
+				<select name="contract_way">
+					<option id="tel" value="tel">手机号</option>
+					<option id="QQ" value="QQ">QQ</option>
+					<option id="email" value="email">邮箱</option>
+					<option id="other" value="other">其它</option>
+				</select>
+				<input type="text" class="form-control" name="contract" id="contract" value="{{ dict.contract }}">
+				<span class="feedback_word3">请留下您的联系方式，以便更好的为您服务</span>
+			</div>
+			<div class="col-md-12">
+				<button type="submit" class="center-block feedback_submit" id="submit">提交</button>
+			</div>
+            <div class="erro_info">
+                {{ feedback_form.non_field_errors }}
+            </div>
+        </form>
+		</div>
+	</div>
+</div>
+
+    {% for x in check_box %}
+        <li value="{{ x }}"></li>
+    {% endfor %}
+    <input type="text" value="{{ dict.contract_way }}" id="way" style="display: none">
+
+</body>
+<script type="text/javascript" src=" ../static/js/dropzone.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+        //图片上传预览
+            $("#photo").change(function(){
+                if (this.files[0]){
+                    var objUrl1 = getObjectURL(this.files[0]) ;
+                }
+                if(this.files[1]){
+                    var objUrl2 = getObjectURL(this.files[1]) ;
+                }
+                if (this.files[2]){
+                    var objUrl3 = getObjectURL(this.files[2]) ;
+                }
+                console.log("objUrl1 = "+objUrl1) ;
+                if (objUrl1) {
+                    $("#img0").attr("src", objUrl1) ;
+                }
+                if (objUrl2) {
+                    $("#img1").attr("src", objUrl2) ;
+                }
+                if (objUrl3) {
+                    $("#img2").attr("src", objUrl3) ;
+                }
+            });
+        //建立一個可存取到该file的url
+        function getObjectURL(file) {
+            var url = null ;
+            if (window.createObjectURL!=undefined) { // basic
+                url = window.createObjectURL(file) ;
+            } else if (window.URL!=undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file) ;
+            } else if (window.webkitURL!=undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file) ;
+            }
+            return url ;
+        }
+
+    </script>
+<script>
+    window.onload = function () {
+        //下部通信方式选择
+        var ways = $("#way").val();
+        var way1 = $("#tel");
+        var way2 = $("#QQ");
+        var way3 = $("#email");
+        var way4 = $("#other");
+        switch(ways){
+            case way1.val():
+                 way1.attr("selected","selected");
+                    console.log(ways);
+                break;
+            case way2.val():
+                 way2.attr("selected","selected");
+                break;
+            case way3.val():
+                 way3.attr("selected","selected");
+                break;
+            case way4.val():
+                 way4.attr("selected","selected");
+                break;
+        }
+
+        ///上部选择框hoder
+        var check_list  =[];
+        $('li').each(function() {
+            var data = $(this).attr('value');
+            if(data!=null){
+                check_list.push(data);
+            }
+        });
+        var len = check_list.length;
+        var i = 0;
+        while (i < len){
+            var data = check_list[i];
+            i++;
+            var ck1 = $("#inlineCheckbox1");
+            var ck2 = $("#inlineCheckbox2");
+            var ck3 = $("#inlineCheckbox3");
+            var ck4 = $("#inlineCheckbox4");
+            var ck5 = $("#inlineCheckbox5");
+            var ck6 = $("#inlineCheckbox6");
+            switch(data){
+            case ck1.val():
+                 ck1.attr("checked","checked");
+                break;
+            case ck2.val():
+                 ck2.attr("checked","checked");
+                break;
+            case ck3.val():
+                 ck3.attr("checked","checked");
+                break;
+            case ck4.val():
+                 ck4.attr("checked","checked");
+                break;
+            case ck5.val():
+                 ck5.attr("checked","checked");
+                break;
+            case ck6.val():
+                 ck6.attr("checked","checked");
+                break;
+        }
+        }
+
+    }
+</script>
+</html>

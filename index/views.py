@@ -41,14 +41,11 @@ class check_forms(forms.Form):
 def index(request):
     feedback = bug()
     if request.method == 'POST':
-        try:
-            feedback_form = check_forms(request.POST)
-
-        except Exception as e:
-            print str(e),
-
+        feedback_form = check_forms(request.POST)
+        check_box_list = request.REQUEST.getlist('check_box_list')
         if feedback_form.is_valid():
-            check_box_list = request.REQUEST.getlist('check_box_list')
+
+            print check_box_list
             if check_box_list:
                 print "check success"
                 try:
@@ -70,11 +67,14 @@ def index(request):
                     feedback.question = question
 
                     feedback.save()
+                    print "sucess"
 
                 except Exception as e:
                     print str(e)
             else:
                 print "checklist not here"
-        return render(request, 'index.html', {'feedback_form': feedback_form})
+            return render(request, 'index.html', {'feedback_form': feedback_form})
+        else:
+            return render(request, 'index.html', {'feedback_form': feedback_form, 'dict': request.POST, "check_box":check_box_list})
     else:
         return render(request, 'index.html', {})
